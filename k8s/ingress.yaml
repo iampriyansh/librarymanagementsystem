@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: library-management-ingress
+  namespace: library-management
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: library.local
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: library-management-app
+                port:
+                  number: 80

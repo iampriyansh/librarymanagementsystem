@@ -1,0 +1,6 @@
+apiVersion: v2
+name: library-management-system
+description: Helm chart for the Spring Boot Library Management System and PostgreSQL
+type: application
+version: 0.1.0
+appVersion: "1.0.0"

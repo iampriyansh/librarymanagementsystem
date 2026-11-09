@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ .Release.Name }}-postgres-data
+  namespace: {{ .Release.Namespace }}
+spec:
+  accessModes: [ReadWriteOnce]
+  resources:
+    requests:
+      storage: {{ .Values.database.storage | quote }}
+  {{- if .Values.database.storageClassName }}
+  storageClassName: {{ .Values.database.storageClassName | quote }}
+  {{- end }}

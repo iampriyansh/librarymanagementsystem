@@ -1,0 +1,34 @@
+replicaCount: 2
+
+image:
+  repository: YOUR_DOCKERHUB_USERNAME/library-management-system
+  tag: latest
+  pullPolicy: Always
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 8080
+
+ingress:
+  enabled: true
+  className: nginx
+  host: library.local
+  path: /
+
+database:
+  image: postgres:17-alpine
+  name: library_db
+  username: postgres
+  storage: 5Gi
+  storageClassName: ""
+
+existingSecret: library-management-secrets
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 256Mi
+  limits:
+    cpu: "1"
+    memory: 768Mi
